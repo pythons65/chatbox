@@ -1,0 +1,40 @@
+<!-- chat/templates/chat/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Chat Rooms</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style1.css' %}">
+</head>
+<body>
+    What chat room would you like to enter?<br>
+    <input id="room-name-input" type="text" size="100" placeholder="RoomName"><br>
+    <input id="name-input" type="text" size="100" value="" placeholder="UserName"><br>
+    <input id="room-name-submit" type="button" value="Enter">
+
+    <script>
+        document.querySelector('#room-name-input').focus();
+        document.querySelector('#room-name-input').onkeyup = handleKey
+        document.querySelector('#name-input').onkeyup = handleKey
+        function handleKey(e) {
+            if (e.keyCode === 13) {  // enter, return
+                document.querySelector('#room-name-submit').click();
+            }
+        };
+
+        document.querySelector('#room-name-submit').onclick = handleClick;
+        function handleClick(e) {
+            
+            var roomName = document.querySelector('#room-name-input').value;
+            var user = document.querySelector('#name-input').value
+            if(user && roomName){
+            sessionStorage.setItem("username", user);
+            window.location.pathname = '/chat/' + roomName + '/';
+        }else{
+            alert("fill all data")
+        }
+        };
+    </script>
+</body>
+</html>
