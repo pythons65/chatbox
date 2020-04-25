@@ -1,0 +1,10 @@
+#room-name-input, #name-input{
+	background: #ddd;
+	height: 40px;
+	border: none;
+	margin-bottom: 5px;
+}
+input{
+	outline: none;
+	padding-left: 5px;
+}
